@@ -7,13 +7,12 @@ driver_config:
   joyent_url: <%= ENV['SDC_CLI_URL'] %>
   joyent_version: '~7.1'
   joyent_ssl_verify_peer: false
-  require_chef_omnibus: latest
+  require_chef_omnibus: true
 
 provisioner:
   name: chef_zero
   chef_omnibus_url: 'https://raw.githubusercontent.com/SIGUSR2/kitchen-smartos/master/smartos_chef.sh'
   ruby_bindir: '/opt/local/bin'
-  chef_omnibus_root: '/opt/local'
 
 platforms:
   - name: base64
