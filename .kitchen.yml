@@ -1,0 +1,32 @@
+---
+driver_plugin: joyent
+driver_config:
+  joyent_username: <%= ENV['SDC_CLI_ACCOUNT'] %>
+  joyent_keyfile: <%= ENV['SDC_CLI_IDENTITY'] %>
+  joyent_keyname: <%= ENV['SDC_CLI_KEY_ID'] %>
+  joyent_url: <%= ENV['SDC_CLI_URL'] %>
+  joyent_version: '~7.1'
+  joyent_ssl_verify_peer: false
+  require_chef_omnibus: latest
+
+provisioner:
+  name: chef_zero
+  chef_omnibus_url: 'https://gist.githubusercontent.com/SIGUSR2/a63b3ab4784bb52f392d/raw/ce94070b882f09a769c2218f42394e58d498781a/smartos_chef.sh'
+  ruby_bindir: '/opt/local/bin'
+  chef_omnibus_root: '/opt/local'
+
+platforms:
+  - name: base64
+    driver_config:
+      joyent_image_id: <joyent_image_id>
+      joyent_flavor_id: <joyent_flavor_id>
+      joyent_networks:
+        - <joyent_network_id>
+
+suites:
+  - name: kitchen 
+    driver_config:
+      joyent_image_name: kitchen-base64
+    run_list:
+      - recipe[foo::bar]
+ 
