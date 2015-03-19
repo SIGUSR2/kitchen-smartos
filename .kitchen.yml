@@ -1,4 +1,5 @@
-ver_plugin: joyent
+---
+driver_plugin: joyent
 driver_config:
   joyent_username: <%= ENV['SDC_CLI_ACCOUNT'] %>
   joyent_keyfile: <%= ENV['SDC_CLI_IDENTITY'] %>
