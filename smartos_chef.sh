@@ -1,7 +1,8 @@
 #!/bin/bash
-LOG=/tmp/chef_install.log
-echo "Installing chef" > $LOG
-pkgin -f update > $LOG 2>&1
+set -o xtrace
+LOG=/var/log/chef_install.log
+exec >$LOG 2>&1
+pkgin -f update
 for package in gcc47 gmake ruby200-base ruby200-yajl ruby200-nokogiri ruby200-readline pkg-config; do
   pkg_info $package >/dev/null 2>&1
   if [ $? -gt 0 ]; then
